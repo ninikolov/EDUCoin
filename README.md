@@ -1,0 +1,2 @@
+# EDUCoin
+EDUCoin
