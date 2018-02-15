@@ -178,8 +178,8 @@ $(window).on('load', function() {
 				$('#content').text('N = ' + n_cc);
 
 				// clear table
-				// $("#record_table tbody tr").remove();
-				tablebody.empty();
+				$("#record_table tbody tr").remove();
+				// tablebody.empty();
 							
 				//////////////
 				// TODO: remove these dummy lines
