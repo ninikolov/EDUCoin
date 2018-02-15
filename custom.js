@@ -132,6 +132,9 @@ $(window).on('load', function() {
 	}
 ];
 
+
+	table = document.getElementById("record_table");
+
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
         // Use Mist/MetaMask's provider
@@ -175,7 +178,6 @@ $(window).on('load', function() {
 							
 				//////////////
 				// TODO: remove these dummy lines
-				var table = document.getElementById("record_table");
 				var row = table.insertRow(0);
 				var cell_subject = row.insertCell("DUMMY");
 				var cell_institute = row.insertCell("DUMMY");
@@ -195,7 +197,7 @@ $(window).on('load', function() {
 							}
 
 							// append entry to table
-							var table = document.getElementById("record_table");
+							// var table = document.getElementById("record_table");
 							var row = table.insertRow(0);
 							var cell_subject = row.insertCell(cc_entries[0]);
 							var cell_institute = row.insertCell(cc_entries[1]);
@@ -216,5 +218,6 @@ $(window).on('load', function() {
         var record_address = $('#n_cc').val(); 
 		updateRecord(record_address);
     });
+
 
 });
