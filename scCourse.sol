@@ -1,41 +1,53 @@
 pragma solidity ^0.4.17;
 
-contract PriorityCoin{
-    mapping(address => uint256) private balanceOf;
+contract EduBase{
+  struct CreditCoin
+  {
+      string subject;
+      string institute;
+      uint256 grade;
+      uint256 ects;
+  }
+}
 
-    address public owner = msg.sender;
+contract WorldsEducation is EduBase{
+    mapping(address => uint256) private studentAchievements;
 
-    /*function buyTokens() payable public{
-        owner.transfer(msg.value);
-        balanceOf[msg.sender] += msg.value;
-    }
+    function addAchievement(CreditCoin cc) public {
 
-    function transfer(address to, uint256 amount) public {
-        require(balanceOf[msg.sender] >= amount);
-        balanceOf[msg.sender] -= amount;
-        balanceOf[to] += amount;
-    }*/
-
-    function consumeAmount(address to, uint256 amount) public{
-        require(balanceOf[msg.sender] >= amount);
-        balanceOf[msg.sender] -= amount;
-        balanceOf[to] += amount;
     }
 }
 
-contract Course {
-    PriorityCoin PC;
+contract PriorityCoin{
+    mapping(address => uint256) private balanceOf;
+    address public owner = msg.sender;
+    function consumeAmount(address consumer, uint256 amount) public{
+        require(balanceOf[msg.sender] >= amount);
+        balanceOf[msg.sender] -= amount;
+        balanceOf[consumer] += amount;
+    }
+}
+
+contract Course is EduBase{
+
+    PriorityCoin pc;
+    WorldsEducation we;
     address public owner;
+    string public subject;
+    string public institute;
+    uint256 public ects;
     uint256 public maxNumberOfStudents;
     uint256 public curNumberOfStudents;
     mapping(address => uint256) private studentBids;
     mapping(uint256 => address) public studentList;
 
 
-    function Course(address _pc, uint256 _maxNum) public{
+    function Course(string _subject, address _pc, address _we, uint256 _maxNumberOfStudents) public{
         owner = msg.sender;
-        PC = PriorityCoin(_pc);
-        maxNumberOfStudents = _maxNum;
+        subject = _subject;
+        pc = PriorityCoin(_pc);
+        we = WorldsEducation(_we);
+        maxNumberOfStudents = _maxNumberOfStudents;
         curNumberOfStudents = 0;
     }
 
@@ -47,16 +59,41 @@ contract Course {
             studentList[curNumberOfStudents] = msg.sender;
             curNumberOfStudents++;
         }
-        PC.consumeAmount(owner,bid);
+        pc.consumeAmount(owner,bid);
         studentBids[msg.sender]=bid;
     }
 
     function performAuction() public {
-        // TODO Need to find the maxNumberOfStudents highest
+        // TODO Actuall need to find the maxNumberOfStudents highest
+        // Instead currently: First-come-first-serve
         for(uint256 i = maxNumberOfStudents; i < curNumberOfStudents; ++i){
             delete(studentList[i]);
         }
-        if(maxNumberOfStudents < curNumberOfStudents)
+        if(maxNumberOfStudents < curNumberOfStudents){
             curNumberOfStudents = maxNumberOfStudents;
+        }
     }
+
+    function getStudentNumber() public view returns(uint256){
+        return curNumberOfStudents;
+    }
+
+    function getStudentList() public view {
+
+    }
+
+    function grade(uint256 mark) public {
+        CreditCoin memory creditCoin = CreditCoin(subject, institute, mark, ects);
+        we.addAchievement(creditCoin);
+    }
+
+    /*function distributeCredits() public{
+    }
+
+    function feedback(uint256 score) public{
+    }
+
+    function getAverageFeedback() public returns (uint256) {
+        return 0;
+    }*/
 }
