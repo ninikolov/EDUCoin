@@ -116,6 +116,7 @@ contract Course is EduBase{
     function Course(string _subject, address _pc, address _we, uint256 _maxNumberOfStudents) public{
         owner = msg.sender;
         subject = _subject;
+        institute = "ETH";
         ects = 3;
         pc = PriorityCoin(_pc);
         we = WorldEducation(_we);
