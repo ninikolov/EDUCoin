@@ -179,11 +179,13 @@ $(window).on('load', function() {
 							
 				//////////////
 				// TODO: remove these dummy lines
+				console.log("Insert row to table");
 				var row = table.insertRow(0);
 				var cell_subject = row.insertCell("DUMMY");
 				var cell_institute = row.insertCell("DUMMY");
 				var cell_grade = row.insertCell("DUMMY");
 				var cell_ects = row.insertCell("DUMMY");
+				console.log("ROWS INSERTED");
 				//////////////
 
 				for(i=0; i<n_cc; ++i) {
