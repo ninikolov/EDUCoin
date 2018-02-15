@@ -18,8 +18,10 @@ contract Record is EduBase { // TODO: rename to AcademicRecord
 	CreditCoin[] private diploma;
 
 	uint256 public numberOfCC;
+	address private owner;
 
 	function Record() public{
+	    owner=msg.sender;
 	    numberOfCC=0;
 	}
 
@@ -46,8 +48,8 @@ contract Record is EduBase { // TODO: rename to AcademicRecord
 	    numberOfCC++;
 	}
 	//TODO
-	function readEntryCC(uint256 index) view public returns(CreditCoin) {
-	    return diploma[index];
+	function readEntry(uint256 index) view public returns(string, string, uint256, uint256) {
+	    return (diploma[index].subject,diploma[index].institute,diploma[index].grade,diploma[index].ects);
 	}
 
 	// TODO: good idea to return credit coin??
@@ -110,6 +112,7 @@ contract Course is EduBase{
     function Course(string _subject, address _pc, address _we, uint256 _maxNumberOfStudents) public{
         owner = msg.sender;
         subject = _subject;
+        ects = 3;
         pc = PriorityCoin(_pc);
         we = WorldEducation(_we);
         maxNumberOfStudents = _maxNumberOfStudents;
