@@ -19,6 +19,16 @@ body {
 	margin: 0;
 }
 
+h1 {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+h2 {
+	padding-top: 10px;
+	padding-top: 5px;
+}
+
 .container {
 	background-color: #fff;
 	-moz-border-radius: 15px;
@@ -26,7 +36,9 @@ body {
 	border-radius: 15px;
 	padding: 15px;
 	width: 90%;
-	margin: 5%;
+	margin-top: 20px;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 #record_table {
@@ -36,17 +48,82 @@ body {
 	border: 0;
 }
 
+#record_form {
+	width: 100%;
+}
+
+#academic_record_input {
+	background-color: #f0f0f0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+	padding: 10px;
+	margin-right: 2%;
+	border: 0;
+	width: 73%;
+}
+
+#academic_record_button {
+	width: 25%;
+    background-color: #f0f0f0;
+    text-color: #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+	padding: 10px;
+	padding-left: 40px;
+	padding-right: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+}
+
+
+#academic_record_button:hover {
+    border: none;
+    background-color: #e0e0e0;
+}
+
+
 /* #record_table tr { */
 table tr {
 	border-bottom: 3px solid #6FC;
 }
 
+form input, button {
+	font-size: 1.5em;
+}
+
 table th {
+    text-align: left;
+    color: #888;
+	padding: 5px;
+}
+
+table thead th {
+	font-size: 1.5em;
     text-align: left;    
 	padding: 5px;
 }
 
-table td {
+table tbody td {
 	padding: 5px;
 }
 
+#content {
+	text-align: right;    
+}
+
+#status_table {
+	width: 100%;
+}
+
+#user_table {
+	/* width: 100%; */
+	font-size: 2em;
+	padding-bottom: 20px;
+}
+
+/* #studentname { */
+/* 	text-align: right; */
+/* } */

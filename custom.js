@@ -201,7 +201,7 @@ $(window).on('load', function() {
     $('#my-form').on('submit', function(e) {
     	console.log("SUBMITTING FORM");
         e.preventDefault(); // cancel the actual submit
-        var record_address = $('#n_cc').val(); 
+        var record_address = $('#academic_record_input').val(); 
 		updateRecord(record_address);
     });
 

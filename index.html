@@ -1,20 +1,41 @@
 <html>
 
     <head>
-        <title>web3 test</title>
+        <title>EDU Credit</title>
         <script src="jquery-3.2.1.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css"></link>
     </head>
 
     <body>
-        <h1>Welcome to web3 - looking like web1!</h1>
+        <h1>EDU Credit</h1>
+        <h2>Interplanetary Credit System</h2>
+		
+		<div class="container">
+			<table id="status_table">
+				<tbody>
+					<tr>
+						<th>Blockchain Status</th>
+						<td id="content">Looking for Web3...</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
-        <div id="content">Can I have web3?!</div>
-        <form id="my-form">
-            <input type="text" name="n_cc" id="n_cc" value="Academic Record Id #" />
-            <button type="submit">Update</button>
-        </form>
-        <!-- <img src="./ani_what.gif" alt="WHATEVER MAKES YOU HAPPY" width="300" height="50" border="0"> -->
+		<div class="container">
+			<div>
+				<table id="user_table">
+					<tbody>
+						<tr>
+							<th>Name:</th>
+							<td id="studentname">Bud Spencer</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<form id="my-form" class="record_form">
+				<input type="text" name="academic_record_input" id="academic_record_input" value="Academic Record Id #" /><button type="submit" id="academic_record_button">Update</button>
+			</form>
+		</div>
         <script src="custom.js"></script>
 
 		<div class="container">
@@ -29,16 +50,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>BIOTS</td>
-						<td>ETH</td>
-						<td>5.5</td>
-						<td>3</td>
-					</tr>
-					<tr>
-						<td>Philosophy</td>
-						<td>UZH</td>
-						<td>4.75</td>
-						<td>4</td>
+						<td>please register academic record id to display your credits</td>
 					</tr>
 				</tbody>
 			</table>
