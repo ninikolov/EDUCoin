@@ -236,12 +236,12 @@ $(window).on('load', function() {
     
     $('#my-form').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
-		var course_address = $('c_add_' + i).val();
+		var record_address = $('#s_rec').val();
 		for (i = 1; i <= 2; i++)
 		{
 			var bid = $('#c_prio_' + i).val();
-			var record_address = $('c_add_' + i).val();
-			doBidding(bid, record_address);
+			var course_address = $('#c_add_' + i).val();
+			doBidding(bid, course_address, record_address);
 		}
     });
 });
