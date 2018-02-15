@@ -180,15 +180,15 @@ $(window).on('load', function() {
 				//////////////
 				// TODO: remove these dummy lines
 				console.log("Insert row to table");
-				var row = table.insertRow(0);
+				var row = table.insertRow(1);
 				var cell_subject = row.insertCell(0);
 				var cell_institute = row.insertCell(1);
 				var cell_grade = row.insertCell(2);
 				var cell_ects = row.insertCell(3);
-				cell_subject = "DUMMY";
-				cell_institute = "DUMMY";
-				cell_grade = "DUMMY";
-				cell_ects = "DUMMY";
+				cell_subject.innerHTML = "DUMMY";
+				cell_institute.innerHTML = "DUMMY";
+				cell_grade.innerHTML = "DUMMY";
+				cell_ects.innerHTML = "DUMMY";
 				console.log("ROWS INSERTED");
 				//////////////
 
