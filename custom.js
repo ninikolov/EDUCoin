@@ -178,12 +178,12 @@ $(window).on('load', function() {
 				$('#content').text('N = ' + n_cc);
 
 				// clear table
-				$("#record_table tr").remove();
+				$("#record_table tbody tr").remove();
 							
 				//////////////
 				// TODO: remove these dummy lines
 				console.log("Insert row to table");
-				var row = table.insertRow(0);
+				var row = table.insertRow(1);
 				var cell_subject = row.insertCell(0);
 				var cell_institute = row.insertCell(1);
 				var cell_grade = row.insertCell(2);
