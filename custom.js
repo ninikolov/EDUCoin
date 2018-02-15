@@ -158,9 +158,11 @@ $(window).on('load', function() {
     // });
 
 	function updateRecord(record_address) {
-		// TODO: now query data from blockchain
+
 		// create instance of contract object that we use to interface the smart contract
 		var contractInstance = web3.eth.contract(contractAbi).at(record_address);
+
+		// asynchronously call a function on the blockchain
 		contractInstance.returnTotalNumberOfCC(
 			function(error, n_cc) {
 				if (error) {
@@ -169,8 +171,43 @@ $(window).on('load', function() {
 					console.log(errorMsg);
 					return;
 				}
-			$('#content').text('N = ' + n_cc);
-		});
+				$('#content').text('N = ' + n_cc);
+							
+				//////////////
+				// TODO: remove these dummy lines
+				var table = document.getElementById("record_table");
+				var row = table.insertRow(0);
+				var cell_subject = row.insertCell("DUMMY");
+				var cell_institute = row.insertCell("DUMMY");
+				var cell_grade = row.insertCell("DUMMY");
+				var cell_ects = row.insertCell("DUMMY");
+				//////////////
+
+				for(i=0; i<n_cc; ++i) {
+					contractInstance.readEntry(
+						i,
+						function(error, cc_entries) {
+							if (error) {
+								var errorMsg = 'Update record: an error occurred' + error;
+								$('#content').text(errorMsg);
+								console.log(errorMsg);
+								return;
+							}
+
+							// append entry to table
+							var table = document.getElementById("record_table");
+							var row = table.insertRow(0);
+							var cell_subject = row.insertCell(cc_entries[0]);
+							var cell_institute = row.insertCell(cc_entries[1]);
+							var cell_grade = row.insertCell(cc_entries[2]);
+							var cell_ects = row.insertCell(cc_entries[3]);
+						}
+
+					);
+				}
+			}
+		);
+
 	}
     
     $('#my-form').on('submit', function(e) {
