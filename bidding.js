@@ -210,7 +210,7 @@ $(window).on('load', function() {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
         // Use Mist/MetaMask's provider
-        $('#content').text('I have web3!!!');
+        console.log('I have web3!!!');
         window.web3 = new Web3(web3.currentProvider);
     } else {
         var errorMsg = 'I don\'t have web3 :( Please open in Google Chrome Browser and install the Metamask extension.';
@@ -230,7 +230,7 @@ $(window).on('load', function() {
 					console.log(errorMsg);
 					return;
 				}
-			$('#content').text('Bid submitted ' + bid + ' for course ' + course_address);
+			console.log('Bid submitted ' + bid + ' for course ' + course_address);
 		});
 	}
     
@@ -243,5 +243,21 @@ $(window).on('load', function() {
 			var course_address = $('#c_add_' + i).val();
 			doBidding(bid, course_address, record_address);
 		}
+    });
+
+    $('#my-form2').on('submit', function(e) {
+        e.preventDefault(); // cancel the actual submit
+		var course_address = $('#c_add_2').val();
+		var contractInstance = web3.eth.contract(contractAbi).at(course_address);
+		contractInstance.performAuction( 
+			function(error) {
+				if (error) {
+					var errorMsg = 'Auction: An error occurred' + error;
+					$('#content').text(errorMsg);
+					console.log(errorMsg);
+					return;
+				}
+			console.log('Auction performed for course ' + course_address);
+		});
     });
 });
