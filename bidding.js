@@ -260,4 +260,22 @@ $(window).on('load', function() {
 			console.log('Auction performed for course ' + course_address);
 		});
     });
+
+    $('#my-form3').on('submit', function(e) {
+        e.preventDefault(); // cancel the actual submit
+		var course_address = $('#c_add_2').val();
+		var record_address = $('#s_rec').val();
+		var mark = $('#grade').val();
+		var contractInstance = web3.eth.contract(contractAbi).at(course_address);
+		contractInstance.grade(record_address, mark, 
+			function(error) {
+				if (error) {
+					var errorMsg = 'Grading: An error occurred' + error;
+					$('#content').text(errorMsg);
+					console.log(errorMsg);
+					return;
+				}
+			console.log('Grading performed for course ' + course_address);
+		});
+    });
 });

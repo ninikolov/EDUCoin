@@ -2,10 +2,11 @@
     <head>
         <title>Student - Available Courses</title>
         <script src="jquery-3.2.1.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css"></link>
     </head>
     <body>
         <h1>Student - Available Courses</h1>
-        <div id="content">Do I have web3?</div>
+        <div id="content"></div>
         <form id="my-form">
 			Students Academic Record: <input type="text" name="s_rec" id="s_rec" value="0x1d10eb8655a1254002d484cdd9917c4b9b9f9b3c" />
             <table>
@@ -39,11 +40,26 @@
 			</table>
             <button type="submit">Bid</button>
         </form>
+		</br>
         <h1>BIOTS 2019</h1>
-        <form id="my-form2">
-            <button type="submit">Perform Auction</button>
-        </form>
-		
+			<form id="my-form2">
+				<button type="submit">Perform Auction</button>
+			</form>
+			<form id="my-form3">
+				<table>
+					<tr>
+						<td>
+							Grade:
+						</td>
+						<td>
+							<input type="text" name="grade" id="grade" value="0" />
+						</td>
+						<td>
+							<button type="submit">Submit Grade</button>
+						</td>
+					</tr>
+				</table>
+			</form>
         <script src="bidding.js"></script>
     </body>
 </html>
