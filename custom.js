@@ -132,6 +132,9 @@ $(window).on('load', function() {
 	}
 ];
 
+
+	tablebody = document.getElementById("record_table").tBodies[0];
+
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
         // Use Mist/MetaMask's provider
@@ -158,25 +161,79 @@ $(window).on('load', function() {
     // });
 
 	function updateRecord(record_address) {
-		// TODO: now query data from blockchain
+
 		// create instance of contract object that we use to interface the smart contract
 		var contractInstance = web3.eth.contract(contractAbi).at(record_address);
+
+		// asynchronously call a function on the blockchain
 		contractInstance.returnTotalNumberOfCC(
 			function(error, n_cc) {
+				console.log("returnTotalNumberOfCC callback");
 				if (error) {
 					var errorMsg = 'Update record: an error occurred' + error;
 					$('#content').text(errorMsg);
 					console.log(errorMsg);
 					return;
 				}
-			$('#content').text('N = ' + n_cc);
-		});
+				$('#content').text('N = ' + n_cc);
+
+				// clear table
+				$("#record_table tbody tr").remove();
+				// tablebody.empty();
+							
+				//////////////
+				// TODO: remove these dummy lines
+				console.log("Insert row to table");
+				var row = tablebody.insertRow(-1); // tablebody.rows.length);
+				var cell_subject = row.insertCell(0);
+				var cell_institute = row.insertCell(1);
+				var cell_grade = row.insertCell(2);
+				var cell_ects = row.insertCell(3);
+				cell_subject.innerHTML = "DUMMY";
+				cell_institute.innerHTML = "DUMMY";
+				cell_grade.innerHTML = "DUMMY";
+				cell_ects.innerHTML = "DUMMY";
+				console.log("ROWS INSERTED");
+				//////////////
+
+				for(i=0; i<n_cc; ++i) {
+					contractInstance.readEntry(
+						i,
+						function(error, cc_entries) {
+							console.log("readEntry callback");
+							if (error) {
+								var errorMsg = 'Update record: an error occurred' + error;
+								$('#content').text(errorMsg);
+								console.log(errorMsg);
+								return;
+							}
+
+							// append entry to table
+							// var table = document.getElementById("record_table");
+							var row = tablebody.insertRow(0);
+							var cell_subject = row.insertCell(0);
+							cell_subject.innerHTML = cc_entries[0];
+							var cell_institute = row.insertCell(1);
+							cell_institute.innerHTML = cc_entries[1];
+							var cell_grade = row.insertCell(2);
+							cell_grade.innerHTML = cc_entries[2];
+							var cell_ects = row.insertCell(3);
+							cell_ects.innerHTML = cc_entries[3];
+						}
+
+					);
+				}
+			}
+		);
+
 	}
     
     $('#my-form').on('submit', function(e) {
+    	console.log("SUBMITTING FORM");
         e.preventDefault(); // cancel the actual submit
         var record_address = $('#n_cc').val(); 
 		updateRecord(record_address);
     });
+
 
 });
