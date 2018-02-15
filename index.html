@@ -1,54 +1,64 @@
 <html>
+
     <head>
         <title>web3 test</title>
         <script src="jquery-3.2.1.js"></script>
-        <script src="custom.js"></script>
     </head>
+
     <body>
         <h1>Welcome to web3 - looking like web1!</h1>
-        <img src="./ani_what.gif" alt="WHATEVER MAKES YOU HAPPY" width="300" height="50" border="0">
+
+        <!-- <img src="./ani_what.gif" alt="WHATEVER MAKES YOU HAPPY" width="300" height="50" border="0"> -->
+        <!-- <div id="content">Can I has web3?!</div> -->
+        <!-- <br /> -->
+        <!-- <span>greeting: <div id="greeting"></div></span> -->
+        <!-- <br /> -->
+        <!-- <div id="updates">updates: </div> -->
+        <!-- <script> -->
+        <!--     window.addEventListener('load', function() { -->
+
+        <!--     // Checking if Web3 has been injected by the browser (Mist/MetaMask) -->
+        <!--     if (typeof web3 !== 'undefined') { -->
+        <!--         // Use Mist/MetaMask's provider -->
+        <!--         $('#content').text('I has web3!!!'); -->
+        <!--         window.web3 = new Web3(web3.currentProvider); -->
+        <!--     } else { -->
+        <!--         $('#content').text('I doesn\'t has web3 :(') -->
+        <!--         console.log('No web3? You should consider trying MetaMask!') -->
+        <!--         // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail) -->
+        <!--         window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545")); -->
+        <!--     } -->
+
+        <!--     var helloContract = web3.eth.contract([{"constant":false,"inputs":[{"name":"newGreeting","type":"string"}],"name":"setGreeting","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"greeting","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"setter","type":"address"},{"indexed":false,"name":"time","type":"uint256"},{"indexed":false,"name":"newGreeting","type":"string"}],"name":"SetGreetingEvent","type":"event"}]); -->
+        <!--     var hello = helloContract.at('0x930609B7b6181fb4E5a72732722e44f88707F6A5'); -->
+        <!--     hello.greeting(function(error, response) { -->
+        <!--         if (error) -->
+        <!--             console.log('Error: ' + error); -->
+        <!--         $('#greeting').text(response); -->
+        <!--     }); -->
+
+        <!--     hello.SetGreetingEvent({}).watch(function(error, data) { -->
+        <!--         console.log('got event!'); -->
+        <!--         if (error) -->
+        <!--             console.log('Error in event handler: ' + error); -->
+        <!--         else { -->
+        <!--             console.log('got event data: ' + data); -->
+        <!--             $('#updates').append(JSON.stringify(data)); -->
+        <!--         } -->
+        <!--     }); -->
+
+        <!--     // do whatever you want to here! -->
+
+        <!--     }); -->
+        <!-- </script> -->
+
         <div id="content">Can I has web3?!</div>
-        <br />
-        <span>greeting: <div id="greeting"></div></span>
-        <br />
-        <div id="updates">updates: </div>
-        <script>
-            window.addEventListener('load', function() {
-
-            // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-            if (typeof web3 !== 'undefined') {
-                // Use Mist/MetaMask's provider
-                $('#content').text('I has web3!!!');
-                window.web3 = new Web3(web3.currentProvider);
-            } else {
-                $('#content').text('I doesn\'t has web3 :(')
-                console.log('No web3? You should consider trying MetaMask!')
-                // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-                window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-            }
-
-            var helloContract = web3.eth.contract([{"constant":false,"inputs":[{"name":"newGreeting","type":"string"}],"name":"setGreeting","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"greeting","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"setter","type":"address"},{"indexed":false,"name":"time","type":"uint256"},{"indexed":false,"name":"newGreeting","type":"string"}],"name":"SetGreetingEvent","type":"event"}]);
-            var hello = helloContract.at('0x930609B7b6181fb4E5a72732722e44f88707F6A5');
-            hello.greeting(function(error, response) {
-                if (error)
-                    console.log('Error: ' + error);
-                $('#greeting').text(response);
-            });
-
-            hello.SetGreetingEvent({}).watch(function(error, data) {
-                console.log('got event!');
-                if (error)
-                    console.log('Error in event handler: ' + error);
-                else {
-                    console.log('got event data: ' + data);
-                    $('#updates').append(JSON.stringify(data));
-                }
-            });
-
-            // do whatever you want to here!
-
-            });
-        </script>
+        <form id="my-form">
+            <input type="text" name="n_cc" id="n_cc" value="Academic Record Id #" />
+            <button type="submit">Update</button>
+        </form>
+        <!-- <img src="./ani_what.gif" alt="WHATEVER MAKES YOU HAPPY" width="300" height="50" border="0"> -->
+        <script src="custom.js"></script>
     </body>
-</html>
 
+</html>
