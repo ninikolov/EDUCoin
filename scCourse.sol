@@ -43,6 +43,10 @@ contract Record is EduBase { // TODO: rename to AcademicRecord
 	}
 	*/
 
+	function returnTotalNumberOfCC() view public returns(uint256){
+	    return numberOfCC;
+	}
+
 	function addCreditCoin(CreditCoin cc) public {
 		diploma.push(cc);
 	    numberOfCC++;
