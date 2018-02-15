@@ -47,7 +47,8 @@ contract Record is EduBase { // TODO: rename to AcademicRecord
 	    return numberOfCC;
 	}
 
-	function addCreditCoin(CreditCoin cc) public {
+	function addCreditCoin(CreditCoin cc, address _add) public {
+	    require(owner == _add);
 		diploma.push(cc);
 	    numberOfCC++;
 	}
@@ -74,7 +75,7 @@ contract WorldEducation is EduBase {
 	mapping (address => address) private student_record;
 
 	function addCreditCoin(address student, CreditCoin cc) public {
-	    Record(student_record[student]).addCreditCoin(cc);
+	    Record(student_record[student]).addCreditCoin(cc,student);
 	}
 
 	function getDiploma(address student) view public returns(CreditCoin[]) {
@@ -116,6 +117,7 @@ contract Course is EduBase{
     function Course(string _subject, address _pc, address _we, uint256 _maxNumberOfStudents) public{
         owner = msg.sender;
         subject = _subject;
+        institute = "ETH";
         ects = 3;
         pc = PriorityCoin(_pc);
         we = WorldEducation(_we);
