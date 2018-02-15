@@ -133,7 +133,7 @@ $(window).on('load', function() {
 ];
 
 
-	table = document.getElementById("record_table");
+	tablebody = document.getElementById("record_table").tBodies[0];
 
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
@@ -183,7 +183,7 @@ $(window).on('load', function() {
 				//////////////
 				// TODO: remove these dummy lines
 				console.log("Insert row to table");
-				var row = table.insertRow(1);
+				var row = tablebody.insertRow(1);
 				var cell_subject = row.insertCell(0);
 				var cell_institute = row.insertCell(1);
 				var cell_grade = row.insertCell(2);
@@ -209,7 +209,7 @@ $(window).on('load', function() {
 
 							// append entry to table
 							// var table = document.getElementById("record_table");
-							var row = table.insertRow(0);
+							var row = tablebody.insertRow(0);
 							var cell_subject = row.insertCell(0);
 							cell_subject.innerHTML = cc_entries[0];
 							var cell_institute = row.insertCell(1);
