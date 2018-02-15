@@ -1,15 +1,46 @@
 $(window).on('load', function() {
     
-    var contractAddress = "0x563b01e18316d1e85c320335b1360c25648af12d"; // in Ropsten testnet!
     var contractAbi = [
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"components": [
+					{
+						"name": "subject",
+						"type": "string"
+					},
+					{
+						"name": "institute",
+						"type": "string"
+					},
+					{
+						"name": "grade",
+						"type": "uint256"
+					},
+					{
+						"name": "ects",
+						"type": "uint256"
+					}
+				],
+				"name": "cc",
+				"type": "tuple"
+			}
+		],
+		"name": "addCreditCoin",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "getGreeting",
+		"name": "returnTotalNumberOfCC",
 		"outputs": [
 			{
-				"name": "s",
-				"type": "string"
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -17,62 +48,135 @@ $(window).on('load', function() {
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [
+		"constant": true,
+		"inputs": [],
+		"name": "getCreditCoins",
+		"outputs": [
 			{
-				"name": "s",
-				"type": "string"
+				"components": [
+					{
+						"name": "subject",
+						"type": "string"
+					},
+					{
+						"name": "institute",
+						"type": "string"
+					},
+					{
+						"name": "grade",
+						"type": "uint256"
+					},
+					{
+						"name": "ects",
+						"type": "uint256"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
-		"name": "setGreeting",
-		"outputs": [],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "readEntry",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "numberOfCC",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
-		"type": "function"
+		"type": "constructor"
 	}
 ];
 
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
         // Use Mist/MetaMask's provider
-        $('#content').text('I has web3!!!');
+        $('#content').text('I have web3!!!');
         window.web3 = new Web3(web3.currentProvider);
     } else {
-        var errorMsg = 'I doesn\'t has web3 :( Please open in Google Chrome Browser and install the Metamask extension.';
+        var errorMsg = 'I don\'t have web3 :( Please open in Google Chrome Browser and install the Metamask extension.';
         $('#content').text(errorMsg);
         console.log(errorMsg);
         return;
     }
     
-    // create instance of contract object that we use to interface the smart contract
-    var contractInstance = web3.eth.contract(contractAbi).at(contractAddress);
-    contractInstance.getGreeting(function(error, greeting) {
-        if (error) {
-            var errorMsg = 'error reading greeting from smart contract: ' + error;
-            $('#content').text(errorMsg);
-            console.log(errorMsg);
-            return;
-        }
-        $('#content').text('greeting from contract: ' + greeting);
-    });
+    // TODO: readEntry
+	// --> var contractInstance = web3.eth.contract(contractAbi).at(record_address);
+    // // create instance of contract object that we use to interface the smart contract
+    // contractInstance.getGreeting(function(error, greeting) {
+    //     if (error) {
+    //         var errorMsg = 'error reading greeting from smart contract: ' + error;
+    //         $('#content').text(errorMsg);
+    //         console.log(errorMsg);
+    //         return;
+    //     }
+    //     $('#content').text('greeting from contract: ' + greeting);
+    // });
+
+	function updateRecord(record_address) {
+		// TODO: now query data from blockchain
+		// create instance of contract object that we use to interface the smart contract
+		var contractInstance = web3.eth.contract(contractAbi).at(record_address);
+		contractInstance.returnTotalNumberOfCC(
+			function(error, n_cc) {
+				if (error) {
+					var errorMsg = 'Update record: an error occurred' + error;
+					$('#content').text(errorMsg);
+					console.log(errorMsg);
+					return;
+				}
+			$('#content').text('N = ' + n_cc);
+		});
+	}
     
     $('#my-form').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
-        var newGreeting = $('#greeting').val(); 
-        contractInstance.setGreeting(newGreeting, function(error, txHash) {
-            if (error) {
-                var errorMsg = 'error writing new greeting to smart contract: ' + error;
-                $('#content').text(errorMsg);
-                console.log(errorMsg);
-                return;
-            }
-            $('#content').text('submitted new greeting to blockchain, transaction hash: ' + txHash);
-        });
+        var record_address = $('#n_cc').val(); 
+		updateRecord(record_address);
     });
 
 });
-
-function cb(error, response) {
-    // callback as helper function for debugging purposes
-    console.log('error: ' + error + ', response: ' + response);
-}
