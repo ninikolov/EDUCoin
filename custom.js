@@ -176,6 +176,9 @@ $(window).on('load', function() {
 					return;
 				}
 				$('#content').text('N = ' + n_cc);
+
+				// clear table
+				$("#record_table tr").remove();
 							
 				//////////////
 				// TODO: remove these dummy lines
@@ -207,10 +210,14 @@ $(window).on('load', function() {
 							// append entry to table
 							// var table = document.getElementById("record_table");
 							var row = table.insertRow(0);
-							var cell_subject = row.insertCell(cc_entries[0]);
-							var cell_institute = row.insertCell(cc_entries[1]);
-							var cell_grade = row.insertCell(cc_entries[2]);
-							var cell_ects = row.insertCell(cc_entries[3]);
+							var cell_subject = row.insertCell(0);
+							cell_subject.innerHTML = cc_entries[0];
+							var cell_institute = row.insertCell(1);
+							cell_institute.innerHTML = cc_entries[1];
+							var cell_grade = row.insertCell(2);
+							cell_grade.innerHTML = cc_entries[2];
+							var cell_ects = row.insertCell(3);
+							cell_ects.innerHTML = cc_entries[3];
 						}
 
 					);
