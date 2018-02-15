@@ -168,6 +168,7 @@ $(window).on('load', function() {
 		// asynchronously call a function on the blockchain
 		contractInstance.returnTotalNumberOfCC(
 			function(error, n_cc) {
+				console.log("returnTotalNumberOfCC callback");
 				if (error) {
 					var errorMsg = 'Update record: an error occurred' + error;
 					$('#content').text(errorMsg);
@@ -189,6 +190,7 @@ $(window).on('load', function() {
 					contractInstance.readEntry(
 						i,
 						function(error, cc_entries) {
+							console.log("readEntry callback");
 							if (error) {
 								var errorMsg = 'Update record: an error occurred' + error;
 								$('#content').text(errorMsg);
