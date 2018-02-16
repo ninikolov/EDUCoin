@@ -10,7 +10,7 @@
 }
 
 body {
-	background-color: #6FC;
+	background-color: #3FBFA5;
 	width: 100%;
 	text-align: center;
 	font-family: Roboto;
@@ -29,16 +29,29 @@ h2 {
 	padding-top: 5px;
 }
 
-.container {
+.spacer {
+	display: inline-block;
+	*display: inline;
+	vertical-align: top;
+	width: 90%;
+	margin-top: 20px;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding: 0;
+	font-size: 0pt;
+}
+
+.rect_container {
+	display: inline-block;
+	*display: inline;
+	vertical-align: top;
 	background-color: #fff;
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 15px;
 	border-radius: 15px;
 	padding: 15px;
-	width: 90%;
-	margin-top: 20px;
-	margin-left: 5%;
-	margin-right: 5%;
+	width: 100%;
+	font-size: 12pt;
 }
 
 #record_table {
@@ -52,19 +65,25 @@ h2 {
 	width: 100%;
 }
 
-#academic_record_input {
+.textinput {
 	background-color: #f0f0f0;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
 	padding: 10px;
-	margin-right: 2%;
 	border: 0;
+}
+.textinput:hover {
+    background-color: #e0e0e0;
+}
+
+#academic_record_input {
+	margin-right: 2%;
 	width: 73%;
 }
 
-#academic_record_button {
-	width: 25%;
+
+.button {
     background-color: #f0f0f0;
     text-color: #fff;
     -moz-border-radius: 5px;
@@ -77,17 +96,25 @@ h2 {
     cursor: pointer;
     border: none;
 }
-
-
-#academic_record_button:hover {
-    border: none;
+.button:hover {
     background-color: #e0e0e0;
 }
 
 
+#academic_record_button {
+	width: 25%;
+}
+
+#bid_button {
+	margin-top: 10px;
+	width: 50%;
+}
+
+
+
 /* #record_table tr { */
 table tr {
-	border-bottom: 3px solid #6FC;
+	border-bottom: 3px solid #3FBFA5;
 }
 
 form input, button {
@@ -107,6 +134,7 @@ table thead th {
 }
 
 table tbody td {
+	text-align: left;
 	padding: 5px;
 }
 
@@ -124,6 +152,26 @@ table tbody td {
 	padding-bottom: 20px;
 }
 
-/* #studentname { */
-/* 	text-align: right; */
-/* } */
+#signup_table {
+	width: 100%;
+}
+
+#transcript {
+	font-size: 16px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	vertical-align: top;
+	width: 49.5%;
+	margin-right: 0.5%;
+}
+
+#signup {
+	font-size: 16px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	vertical-align: top;
+	width: 49.5%;
+	margin-left: 0.5%;
+}
