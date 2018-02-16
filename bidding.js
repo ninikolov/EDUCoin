@@ -244,38 +244,4 @@ $(window).on('load', function() {
 			doBidding(bid, course_address, record_address);
 		}
     });
-
-    $('#bidding_form2').on('submit', function(e) {
-        e.preventDefault(); // cancel the actual submit
-		var course_address = $('#c_add_2').val();
-		var contractInstance = web3.eth.contract(contractAbi).at(course_address);
-		contractInstance.performAuction( 
-			function(error) {
-				if (error) {
-					var errorMsg = 'Auction: An error occurred' + error;
-					$('#content').text(errorMsg);
-					console.log(errorMsg);
-					return;
-				}
-			console.log('Auction performed for course ' + course_address);
-		});
-    });
-
-    $('#bidding_form3').on('submit', function(e) {
-        e.preventDefault(); // cancel the actual submit
-		var course_address = $('#c_add_2').val();
-		var record_address = $('#academic_record_input').val();
-		var mark = $('#grade').val();
-		var contractInstance = web3.eth.contract(contractAbi).at(course_address);
-		contractInstance.grade(record_address, mark, 
-			function(error) {
-				if (error) {
-					var errorMsg = 'Grading: An error occurred' + error;
-					$('#content').text(errorMsg);
-					console.log(errorMsg);
-					return;
-				}
-			console.log('Grading performed for course ' + course_address);
-		});
-    });
 });
