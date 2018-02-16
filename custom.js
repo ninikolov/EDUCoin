@@ -162,7 +162,6 @@ $(window).on('load', function() {
 					console.log(errorMsg);
 					return;
 				}
-				$('#content').text('N = ' + n_cc);
 
 				// clear table
 				$("#record_table tbody tr").remove();

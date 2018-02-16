@@ -234,7 +234,7 @@ $(window).on('load', function() {
 		});
 	}
     
-    $('#my-form').on('submit', function(e) {
+    $('#bidding_form').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
 		var record_address = $('#s_rec').val();
 		for (i = 1; i <= 2; i++)
@@ -245,7 +245,7 @@ $(window).on('load', function() {
 		}
     });
 
-    $('#my-form2').on('submit', function(e) {
+    $('#bidding_form2').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
 		var course_address = $('#c_add_2').val();
 		var contractInstance = web3.eth.contract(contractAbi).at(course_address);
@@ -261,7 +261,7 @@ $(window).on('load', function() {
 		});
     });
 
-    $('#my-form3').on('submit', function(e) {
+    $('#bidding_form3').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
 		var course_address = $('#c_add_2').val();
 		var record_address = $('#s_rec').val();
