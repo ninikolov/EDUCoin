@@ -236,7 +236,7 @@ $(window).on('load', function() {
     
     $('#bidding_form').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
-		var record_address = $('#s_rec').val();
+		var record_address = $('#academic_record_input').val();
 		for (i = 1; i <= 2; i++)
 		{
 			var bid = $('#c_prio_' + i).val();
@@ -264,7 +264,7 @@ $(window).on('load', function() {
     $('#bidding_form3').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
 		var course_address = $('#c_add_2').val();
-		var record_address = $('#s_rec').val();
+		var record_address = $('#academic_record_input').val();
 		var mark = $('#grade').val();
 		var contractInstance = web3.eth.contract(contractAbi).at(course_address);
 		contractInstance.grade(record_address, mark, 
