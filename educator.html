@@ -1,52 +1,29 @@
 <html>
     <head>
-        <title>Student - Available Courses</title>
+        <title>Educator - Course Grading</title>
         <script src="jquery-3.2.1.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css"></link>
     </head>
     <body>
-        <h1>Student - Available Courses</h1>
+        <h1>Educator - Course Grading</h1>
         <div id="content"></div>
-        <form id="bidding_form">
-			Students Academic Record: <input type="text" name="academic_record_input" id="academic_record_input" value="0x1d10eb8655a1254002d484cdd9917c4b9b9f9b3c" />
-            <table>
-				<tr>
-					<th>Lecture</th>
-					<th>Course ID</th>
-					<th>Priority</th>
-				</tr>
-				<tr>
-					<td>
-						Politics
-					</td>
-					<td>
-						<input type="text" name="c_add_1" id="c_add_1" value="0x3ac1b9516be5b1b225b5809dcbaded9312ed013d" />
-					</td>
-					<td>
-						<input type="text" name="c_prio_1" id="c_prio_1" value="0" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						BIOTS 2019
-					</td>
-					<td>
-						<input type="text" name="c_add_2" id="c_add_2" value="0xbf5f1c694ac7e8559422318b28016d75ed451148" />
-					</td>
-					<td>
-						<input type="text" name="c_prio_2" id="c_prio_2" value="0" />
-					</td>
-				</tr>
-			</table>
-            <button type="submit">Bid</button>
-        </form>
-		</br>
         <h1>BIOTS 2019</h1>
-			<form id="bidding_form2">
+			<form id="grading_form1">
+				<input type="text" name="c_add" id="c_add" class="textinput" value="copy paste course id #" />
 				<button type="submit">Perform Auction</button>
 			</form>
-			<form id="bidding_form3">
+			</br>
+			</br>
+			<form id="grading_form2">
 				<table>
+					<tr>
+						<td>
+							Student Address:
+						</td>
+						<td>
+							<input type="text" name="s_addr" id="s_addr" value="0" />
+						</td>
+					</tr>
 					<tr>
 						<td>
 							Grade:
@@ -60,6 +37,6 @@
 					</tr>
 				</table>
 			</form>
-        <script src="bidding.js"></script>
+        <script src="educator.js"></script>
     </body>
 </html>

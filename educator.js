@@ -219,29 +219,38 @@ $(window).on('load', function() {
         return;
     }
     
- 	function doBidding(bid, course_address, record_address) {
-		// create instance of contract object that we use to interface the smart contract
+
+    $('#grading_form1').on('submit', function(e) {
+        e.preventDefault(); // cancel the actual submit
+		var course_address = $('#c_add').val();
 		var contractInstance = web3.eth.contract(contractAbi).at(course_address);
-		contractInstance.bidForCourse(bid, record_address, 
+		contractInstance.performAuction( 
 			function(error) {
 				if (error) {
-					var errorMsg = 'Bidding: An error occurred' + error;
+					var errorMsg = 'Auction: An error occurred' + error;
 					$('#content').text(errorMsg);
 					console.log(errorMsg);
 					return;
 				}
-			console.log('Bid submitted ' + bid + ' for course ' + course_address);
+			console.log('Auction performed for course ' + course_address);
 		});
-	}
-    
-    $('#bidding_form').on('submit', function(e) {
+    });
+
+    $('#grading_form2').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
-		var record_address = $('#academic_record_input').val();
-		for (i = 1; i <= 2; i++)
-		{
-			var bid = $('#c_prio_' + i).val();
-			var course_address = $('#c_add_' + i).val();
-			doBidding(bid, course_address, record_address);
-		}
+		var course_address = $('#c_add').val();
+		var student_address = $('#s_addr').val();
+		var mark = $('#grade').val();
+		var contractInstance = web3.eth.contract(contractAbi).at(course_address);
+		contractInstance.grade(student_address, mark, 
+			function(error) {
+				if (error) {
+					var errorMsg = 'Grading: An error occurred' + error;
+					$('#content').text(errorMsg);
+					console.log(errorMsg);
+					return;
+				}
+			console.log('Grading performed for course ' + course_address);
+		});
     });
 });
