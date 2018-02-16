@@ -1,41 +1,110 @@
+<!DOCTYPE html>
 <html>
 
     <head>
-        <title>web3 test</title>
+		<meta charset="UTF-8"> 
+        <title>EDU Credit</title>
         <script src="jquery-3.2.1.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css"></link>
     </head>
 
     <body>
-        <h1>Welcome to web3 - looking like web1!</h1>
+        <h1>EDU Credit</h1>
+        <h2>Interplanetary Credit System</h2>
+		
 
-        <div id="content">Can I have web3?!</div>
-        <form id="my-form">
-            <input type="text" name="n_cc" id="n_cc" value="Academic Record Id #" />
-            <button type="submit">Update</button>
-        </form>
-        <!-- <img src="./ani_what.gif" alt="WHATEVER MAKES YOU HAPPY" width="300" height="50" border="0"> -->
-        <script src="custom.js"></script>
+		<div class="spacer">
+			<div class="rect_container">
+				<table id="status_table">
+					<tbody>
+						<tr>
+							<th>Blockchain Status</th>
+							<td id="content">Looking for Web3...</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
-		<table id="record_table">
-			<thead>
-				<tr>
-					<th>Course</th>
-					<th>Institute</th>
-					<th>Grade</th>
-					<th>ECTS</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>H</td>
-					<td>E</td>
-					<td>Y</td>
-					<td>O</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="spacer">
+			<div class="rect_container">
+				<table id="user_table">
+					<tbody>
+						<tr>
+							<th>Name:</th>
+							<td id="studentname">Bud Spencer</td>
+						</tr>
+					</tbody>
+				</table>
+				<form id="record_form">
+					<input type="text" name="academic_record_input" id="academic_record_input" class="textinput" value="Academic Record Id #" /><button type="submit" id="academic_record_button" class="button">Update</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="spacer" style="">
+
+			<div id="transcript" class="rect_container">
+				<h2>Transcript</h2>
+				<table id="record_table">
+					<thead>
+						<tr>
+							<th>Course</th>
+							<th>Institute</th>
+							<th>Grade</th>
+							<th>Effort</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>please register academic record id to display your credits</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="signup" class="rect_container">
+				<h2>Available Courses</h2>
+				<form id="bidding_form">
+					<table id="signup_table">
+						<thead>
+							<tr>
+								<th>Lecture</th>
+								<th>Course ID</th>
+								<th>Priority</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Politics</td>
+								<td>
+									<input type="text" name="c_add_1" id="c_add_1" class="textinput" value="copy paste course id #" />
+								</td>
+								<td>
+									<input type="text" name="c_prio_1" id="c_prio_1" class="textinput" value="0" />
+								</td>
+							</tr>
+							<tr>
+								<td>BIOTS 2019</td>
+								<td>
+									<input type="text" name="c_add_2" id="c_add_2" class="textinput" value="copy paste course id #" />
+								</td>
+								<td>
+									<input type="text" name="c_prio_2" id="c_prio_2" class="textinput" value="0" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<button type="submit" id="bid_button" class="button">Bid</button>
+				</form>
+
+			</div>
+
+		</div>
 
     </body>
+
+	<script src="custom.js"></script>
+	<script src="bidding.js"></script>
 
 </html>

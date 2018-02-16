@@ -146,19 +146,6 @@ $(window).on('load', function() {
         console.log(errorMsg);
         return;
     }
-    
-    // TODO: readEntry
-	// --> var contractInstance = web3.eth.contract(contractAbi).at(record_address);
-    // // create instance of contract object that we use to interface the smart contract
-    // contractInstance.getGreeting(function(error, greeting) {
-    //     if (error) {
-    //         var errorMsg = 'error reading greeting from smart contract: ' + error;
-    //         $('#content').text(errorMsg);
-    //         console.log(errorMsg);
-    //         return;
-    //     }
-    //     $('#content').text('greeting from contract: ' + greeting);
-    // });
 
 	function updateRecord(record_address) {
 
@@ -175,27 +162,10 @@ $(window).on('load', function() {
 					console.log(errorMsg);
 					return;
 				}
-				$('#content').text('N = ' + n_cc);
 
 				// clear table
 				$("#record_table tbody tr").remove();
-				// tablebody.empty();
 							
-				//////////////
-				// TODO: remove these dummy lines
-				console.log("Insert row to table");
-				var row = tablebody.insertRow(-1); // tablebody.rows.length);
-				var cell_subject = row.insertCell(0);
-				var cell_institute = row.insertCell(1);
-				var cell_grade = row.insertCell(2);
-				var cell_ects = row.insertCell(3);
-				cell_subject.innerHTML = "DUMMY";
-				cell_institute.innerHTML = "DUMMY";
-				cell_grade.innerHTML = "DUMMY";
-				cell_ects.innerHTML = "DUMMY";
-				console.log("ROWS INSERTED");
-				//////////////
-
 				for(i=0; i<n_cc; ++i) {
 					contractInstance.readEntry(
 						i,
@@ -209,8 +179,7 @@ $(window).on('load', function() {
 							}
 
 							// append entry to table
-							// var table = document.getElementById("record_table");
-							var row = tablebody.insertRow(0);
+							var row = tablebody.insertRow(-1);
 							var cell_subject = row.insertCell(0);
 							cell_subject.innerHTML = cc_entries[0];
 							var cell_institute = row.insertCell(1);
@@ -228,10 +197,10 @@ $(window).on('load', function() {
 
 	}
     
-    $('#my-form').on('submit', function(e) {
+    $('#record_form').on('submit', function(e) {
     	console.log("SUBMITTING FORM");
         e.preventDefault(); // cancel the actual submit
-        var record_address = $('#n_cc').val(); 
+        var record_address = $('#academic_record_input').val(); 
 		updateRecord(record_address);
     });
 
