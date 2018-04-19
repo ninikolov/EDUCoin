@@ -1,17 +1,31 @@
 <html>
+
     <head>
         <title>Educator - Course Grading</title>
         <script src="jquery-3.2.1.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css"></link>
     </head>
+
     <body>
         <h1>Educator - Course Grading</h1>
         <div id="content"></div>
+
         <h1>BIOTS 2019</h1>
-			<form id="grading_form1">
-				<input type="text" name="c_add" id="c_add" class="textinput" value="copy paste course id #" />
-				<button type="submit">Perform Auction</button>
-			</form>
+
+
+			<div class="spacer">
+				<div class="rect_container">
+					<form id="grading_form1">
+						<input type="text" name="c_add" id="c_add" class="textinput" value="copy paste course id #" />
+						<button type="submit">Perform Auction</button>
+					</form>
+				</div>
+			</div>
+
+
+
+
+
 			</br>
 			</br>
 			<form id="grading_form2">
@@ -37,6 +51,17 @@
 					</tr>
 				</table>
 			</form>
-        <script src="educator.js"></script>
+
+
+
+		<div class="spacer" style="bottom: 0px;">
+			<div id="switch_view_rect" class="rect_container">
+				<button id="switch_view_button" class="button"><a href="./index.html">Student View</a></button>
+			</div>
+		</div>
+
     </body>
+
+	<script src="educator.js"></script>
+
 </html>
