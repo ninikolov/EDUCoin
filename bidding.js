@@ -1,3 +1,5 @@
+// Defining interfaces to Solidity
+
 $(window).on('load', function() {
     
     var contractAbi = [
@@ -219,6 +221,10 @@ $(window).on('load', function() {
         return;
     }
     
+    // Bid a certain amount of Priority Coins for the course
+    //  bid - amount to bid
+    //  course_address - address of course smart contract
+    //  record_address - address of academic record smart contract
  	function doBidding(bid, course_address, record_address) {
 		// create instance of contract object that we use to interface the smart contract
 		var contractInstance = web3.eth.contract(contractAbi).at(course_address);

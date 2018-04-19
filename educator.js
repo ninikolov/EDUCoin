@@ -1,3 +1,5 @@
+// Defining interfaces to Solidity
+
 $(window).on('load', function() {
     
     var contractAbi = [
@@ -220,6 +222,7 @@ $(window).on('load', function() {
     }
     
 
+    // Perform course auction - determine which students will be able to take the course (course address given in the HTML form)
     $('#grading_form1').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
 		var course_address = $('#c_add').val();
@@ -236,6 +239,7 @@ $(window).on('load', function() {
 		});
     });
 
+    // Grade Student - assigns a grade to the given student (both values read from HTML form)
     $('#grading_form2').on('submit', function(e) {
         e.preventDefault(); // cancel the actual submit
 		var course_address = $('#c_add').val();

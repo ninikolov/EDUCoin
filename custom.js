@@ -1,3 +1,5 @@
+// Defining interfaces to Solidity
+
 $(window).on('load', function() {
     
     var contractAbi = [
@@ -147,6 +149,8 @@ $(window).on('load', function() {
         return;
     }
 
+    // Update the Academic Record in the UI, i.e. the digital CV
+    //  record_address - address of academic record for which to request entries
 	function updateRecord(record_address) {
 
 		// create instance of contract object that we use to interface the smart contract
